@@ -14,7 +14,8 @@ from rich.live import Live
 
 console = Console()
 
-def menu(interface):
+def menu(interface: str) -> None:
+    """Display the sniffer menu and route to the selected sniffer module."""
     while True:
         console.print("\n[bold yellow]WiFi Sniffers[/]")
         console.print("[cyan]1.[/] Probe Sniffer")
@@ -37,10 +38,10 @@ def menu(interface):
         else:
             console.print("[bold red]Invalid choice[/]")
 
-def sniff_probes(interface):
+def sniff_probes(interface: str) -> None:
+    """Sniff and log WiFi probe requests in real time on the given interface."""
     console.print(Panel("[bold green]📡 Real-Time Probe Request Viewer (CTRL+C to stop)[/]"))
 
-    seen = set()
     data = []
 
     table = Table(title="Probe Requests", expand=True)
@@ -53,7 +54,8 @@ def sniff_probes(interface):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     csv_path = log_dir / f"probe_{timestamp}.csv"
 
-    def extract_probe(line):
+    def extract_probe(line: str) -> tuple[str, str]:
+        """Extract SSID and signal from a tcpdump probe request line."""
         try:
             ssid_match = re.search(r'Probe Request \((.*?)\)', line)
             ssid = ssid_match.group(1) if ssid_match else "Hidden"
@@ -74,8 +76,7 @@ def sniff_probes(interface):
 
             for line in proc.stdout:
                 ssid, signal = extract_probe(line)
-                if ssid and ssid not in seen:
-                    seen.add(ssid)
+                if ssid:
                     timestamp = datetime.now().strftime("%H:%M:%S")
                     table.add_row(timestamp, ssid if ssid else "Hidden", signal)
                     data.append([timestamp, ssid, signal])
@@ -86,13 +87,14 @@ def sniff_probes(interface):
                 writer.writerow(["Time", "SSID", "Signal"])
                 writer.writerows(data)
             console.print(f"\n[bold green]✅ Log saved to:[/] [cyan]{csv_path}[/]")
-            console.print(f"[bold cyan]🔎 Total unique probes captured:[/] [bold yellow]{len(data)}[/]")
+            console.print(f"[bold cyan]🔎 Total probes captured:[/] [bold yellow]{len(data)}[/]")
             
             
             
             
 
-def sniff_beacons(interface="wlan0"):
+def sniff_beacons(interface: str = "wlan0") -> None:
+    """Sniff and log WiFi beacon frames in real time on the given interface."""
     from pathlib import Path
     import csv
 
@@ -113,7 +115,8 @@ def sniff_beacons(interface="wlan0"):
     table.add_column("Channel", justify="center")
     table.add_column("Signal", justify="right")
 
-    def parse_beacon_output(output_line):
+    def parse_beacon_output(output_line: str) -> dict:
+        """Parse a tcpdump beacon output line into a dict of info."""
         time_match = re.match(r"^(\d{2}:\d{2}:\d{2})", output_line)
         signal_match = re.search(r"(-\d{2,3}dBm)", output_line)
         ssid_match = re.search(r"Beacon\s+\((.*?)\)", output_line)
@@ -128,7 +131,8 @@ def sniff_beacons(interface="wlan0"):
             }
         return None
 
-    def render_table():
+    def render_table() -> Align:
+        """Render the beacon table for live display."""
         tbl = Table(show_header=True, header_style="bold magenta")
         tbl.add_column("Time", style="dim", width=10)
         tbl.add_column("SSID", style="cyan", no_wrap=True)
@@ -180,7 +184,8 @@ def sniff_beacons(interface="wlan0"):
             
             
 
-def sniff_deauth(interface):
+def sniff_deauth(interface: str) -> None:
+    """Sniff and log WiFi deauthentication frames in real time on the given interface."""
     console.clear()
     console.print(Panel("[bold red]💥 Real-Time Deauth Sniffer Viewer (CTRL+C to stop)[/]"))
 
@@ -196,7 +201,8 @@ def sniff_deauth(interface):
     csv_path = log_dir / f"deauth_{timestamp}.csv"
     data = []
 
-    def parse_deauth(line):
+    def parse_deauth(line: str) -> dict:
+        """Parse a tcpdump deauth output line into a dict of info."""
         try:
             time_match = re.search(r"^(\d{2}:\d{2}:\d{2})", line)
             signal_match = re.search(r"(-\d+dBm)", line)
@@ -238,7 +244,8 @@ def sniff_deauth(interface):
             
 
 
-def scan_aps(interface):
+def scan_aps(interface: str) -> None:
+    """Scan for nearby access points and log the results using airodump-ng."""
     console.clear()
     console.print(Panel("[bold cyan]📶 Scanning Nearby Access Points (CTRL+C to stop)[/]"))
 

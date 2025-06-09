@@ -1,0 +1,14 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+CC:B1:82:4B:31:98, 2025-06-04 04:15:36, 2025-06-04 04:15:41,  8, 130, WPA2 WPA, CCMP TKIP, PSK, -62,       17,        5,   0.  0.  0.  0,  16, HUAWEI-2.4G-C2y6, 
+4C:C6:4C:A5:E1:AF, 2025-06-04 04:15:37, 2025-06-04 04:15:40,  3,  -1, WPA, ,   , -83,        0,        1,   0.  0.  0.  0,   0, , 
+48:B2:5D:36:10:EC, 2025-06-04 04:15:37, 2025-06-04 04:15:41, 11, 130, WPA2 WPA, CCMP TKIP, PSK, -93,       11,        1,   0.  0.  0.  0,  10, NIJI LEINE, 
+E2:37:BF:05:37:36, 2025-06-04 04:15:39, 2025-06-04 04:15:41,  8, 130, WPA2, CCMP, PSK, -25,        2,        0,   0.  0.  0.  0,  16, DIRECT-TP-BRAVIA, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+58:96:1D:D1:16:9A, 2025-06-04 04:15:26, 2025-06-04 04:15:26, -52,       11, (not associated) ,HUAWEI-5G-C2y6
+7E:CD:C0:A3:62:F7, 2025-06-04 04:15:36, 2025-06-04 04:15:36, -48,        3, CC:B1:82:4B:31:98,
+E0:37:BF:E5:37:36, 2025-06-04 04:15:36, 2025-06-04 04:15:36, -34,        4, CC:B1:82:4B:31:98,
+34:E6:E6:6A:C8:5D, 2025-06-04 04:15:36, 2025-06-04 04:15:36, -68,        1, CC:B1:82:4B:31:98,
+C2:82:E2:31:58:8C, 2025-06-04 04:15:37, 2025-06-04 04:15:37, -84,        1, 4C:C6:4C:A5:E1:AF,
+

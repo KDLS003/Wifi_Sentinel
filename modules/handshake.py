@@ -8,7 +8,8 @@ console = Console()
 handshake_dir = "logs/wifite_handshake"
 hs_source_dir = "hs"
 
-def auto_attack(interface):
+def auto_attack(interface: str) -> None:
+    """Automatically capture WPA2 handshakes using Wifite and save .cap files."""
     console.print(Panel("[bold magenta]🚀 Starting Wifite for automatic handshake capture[/]"))
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     capture_folder = os.path.join(handshake_dir, f"capture_{timestamp}")

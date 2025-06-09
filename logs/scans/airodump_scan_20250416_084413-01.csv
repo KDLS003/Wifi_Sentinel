@@ -1,0 +1,8 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+CC:B1:82:4B:31:98, 2025-04-16 08:44:15, 2025-04-16 08:44:17, 10, 130, WPA2 WPA, CCMP TKIP, PSK, -40,        3,        0,   0.  0.  0.  0,  16, HUAWEI-2.4G-C2y6, 
+4C:C6:4C:A5:E1:AF, 2025-04-16 08:44:17, 2025-04-16 08:44:17,  5, 130, WPA2, CCMP TKIP, PSK, -93,        1,        0,   0.  0.  0.  0,  15, NIJI LEINE_plus, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+60:AB:67:E2:97:70, 2025-04-16 08:44:17, 2025-04-16 08:44:17, -94,        7, 4C:C6:4C:A5:E1:AF,
+

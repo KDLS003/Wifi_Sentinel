@@ -1,0 +1,28 @@
+2025-06-04 04:38:11,278 [INFO] Selected interface: wlan0
+2025-06-04 04:40:09,754 [INFO] Selected interface: wlan0
+2025-06-04 04:40:55,435 [ERROR] Error in main menu: cannot import name 'capture_handshake' from 'modules.handshake_attack' (/home/kali/Desktop/WiFi_sentinel_V3/modules/handshake_attack.py)
+2025-06-04 04:44:52,021 [INFO] User exited WiFi Sentinel.
+2025-06-04 04:45:50,879 [INFO] Selected interface: wlan0
+2025-06-04 04:45:58,713 [ERROR] Error in main menu: cannot import name 'capture_handshake' from 'modules.handshake_attack' (/home/kali/Desktop/WiFi_sentinel_V3/modules/handshake_attack.py)
+2025-06-04 04:48:02,807 [ERROR] Error in main menu: cannot import name 'capture_handshake' from 'modules.handshake_attack' (/home/kali/Desktop/WiFi_sentinel_V3/modules/handshake_attack.py)
+2025-06-04 04:52:57,031 [INFO] Selected interface: wlan0
+2025-06-04 04:53:04,988 [ERROR] Error in main menu: cannot import name 'capture_handshake' from 'modules.handshake_attack' (/home/kali/Desktop/WiFi_sentinel_V3/modules/handshake_attack.py)
+2025-06-04 04:59:15,151 [INFO] Selected interface: wlan0
+2025-06-04 04:59:23,457 [ERROR] Error in main menu: cannot import name 'capture_handshake' from 'modules.handshake_attack' (/home/kali/Desktop/WiFi_sentinel_V3/modules/handshake_attack.py)
+2025-06-04 05:13:24,343 [INFO] Selected interface: wlan0
+2025-06-04 06:54:37,503 [INFO] Selected interface: wlan0
+2025-06-08 02:26:43,384 [INFO] Selected interface: wlan0
+2025-06-08 02:36:52,173 [INFO] Selected interface: wlan0
+2025-06-08 02:49:44,772 [INFO] Selected interface: wlan0
+2025-06-08 02:53:52,821 [INFO] Selected interface: wlan0
+2025-06-08 03:03:15,703 [INFO] Selected interface: wlan0
+2025-06-08 03:13:42,325 [INFO] Selected interface: wlan0
+2025-06-08 03:18:08,759 [INFO] Selected interface: wlan0
+2025-06-08 03:22:39,595 [INFO] Selected interface: wlan0
+2025-06-08 03:25:38,721 [INFO] Selected interface: wlan0
+2025-06-08 03:26:23,793 [INFO] User exited WiFi Sentinel.
+2025-06-08 03:26:51,663 [INFO] Selected interface: wlan0
+2025-06-08 03:32:47,304 [INFO] Selected interface: wlan0
+2025-06-08 03:38:19,512 [INFO] Selected interface: wlan0
+2025-06-08 03:40:31,794 [INFO] Selected interface: wlan0
+2025-06-08 03:42:28,737 [INFO] User exited WiFi Sentinel.

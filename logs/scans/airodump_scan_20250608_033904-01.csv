@@ -1,0 +1,12 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+4C:C6:4C:A5:E1:AF, 2025-06-08 03:39:19, 2025-06-08 03:39:19, 11, 130, WPA2, CCMP TKIP, PSK, -89,        1,        0,   0.  0.  0.  0,  15, NIJI LEINE_plus, 
+CC:B1:82:4B:31:98, 2025-06-08 03:39:17, 2025-06-08 03:40:04,  8, 130, WPA2 WPA, CCMP TKIP, PSK, -41,       20,      216,   0.  0.  0.  0,  16, HUAWEI-2.4G-C2y6, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+AE:F0:26:3C:37:E3, 2025-06-08 03:39:36, 2025-06-08 03:39:36, -74,        1, (not associated) ,NIJI LEINE
+7E:CD:C0:A3:62:F7, 2025-06-08 03:39:21, 2025-06-08 03:39:36, -62,      217, CC:B1:82:4B:31:98,
+98:A8:29:95:5B:91, 2025-06-08 03:39:22, 2025-06-08 03:39:22, -54,        3, CC:B1:82:4B:31:98,
+2A:55:03:54:73:16, 2025-06-08 03:39:14, 2025-06-08 03:40:10, -36,       70, (not associated) ,HUAWEI-2.4G-d8SV,HUAWEI-2.4G-t7wA,Ivy Dianne Transient House,PLDTHOMEFIBR5G6S4q5,SKYPUFF VAPESHOP5G,HUAWEI-2.4G-tF3U,HUAWEI-5G-tF3U,Blue,GateWay2 ( 2nd Floor ),HG8145V5_E9AD8
+
+

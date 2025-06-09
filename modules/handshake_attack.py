@@ -10,7 +10,14 @@ from rich.panel import Panel
 
 console = Console()
 
-def capture_handshake(interface):
+print(">>> handshake_attack.py: module is being loaded")
+
+def capture_handshake(interface: str) -> None:
+    print(">>> handshake_attack.py: inside capture_handshake definition")
+    """
+    Capture a WPA2 4-way handshake for a specified AP and client.
+    Sets monitor mode, runs airodump-ng, and triggers deauth to force handshake.
+    """
     console.print(Panel("[bold cyan]🔓 4-Way Handshake Capture[/]"))
 
     bssid = Prompt.ask("Enter target BSSID (AP)")
@@ -64,3 +71,5 @@ def capture_handshake(interface):
     except KeyboardInterrupt:
         airodump_proc.terminate()
         console.print("[bold red]⛔ Capture stopped manually[/]")
+
+print(">>> handshake_attack.py: end of file")

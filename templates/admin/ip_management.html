@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .nav {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .nav a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .ip-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .ip-form input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .ip-form button {
+            padding: 0.5rem 1rem;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .ip-form button:hover {
+            background-color: #1557b0;
+        }
+        .ip-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .ip-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .ip-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .ip-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .ip-item:last-child {
+            border-bottom: none;
+        }
+        .ip-item button {
+            padding: 0.25rem 0.5rem;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .ip-item button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>IP Management</h1>
+            <a href="/admin/logout">Logout</a>
+        </div>
+        
+        <div class="nav">
+            <a href="/admin">Dashboard</a>
+            <a href="/admin/ip-management">IP Management</a>
+        </div>
+
+        <div class="card">
+            <h2>Add IP Address</h2>
+            <form class="ip-form" method="POST">
+                <input type="text" name="ip" placeholder="Enter IP address" required>
+                <input type="hidden" name="action" value="whitelist">
+                <button type="submit">Add to Whitelist</button>
+            </form>
+            <form class="ip-form" method="POST">
+                <input type="text" name="ip" placeholder="Enter IP address" required>
+                <input type="hidden" name="action" value="blacklist">
+                <button type="submit">Add to Blacklist</button>
+            </form>
+        </div>
+
+        <div class="ip-list">
+            <div class="ip-section">
+                <h2>Whitelisted IPs</h2>
+                {% for ip in whitelist %}
+                <div class="ip-item">
+                    <span>{{ ip }}</span>
+                    <form method="POST" style="margin: 0;">
+                        <input type="hidden" name="ip" value="{{ ip }}">
+                        <input type="hidden" name="action" value="remove_whitelist">
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="ip-section">
+                <h2>Blacklisted IPs</h2>
+                {% for ip in blacklist %}
+                <div class="ip-item">
+                    <span>{{ ip }}</span>
+                    <form method="POST" style="margin: 0;">
+                        <input type="hidden" name="ip" value="{{ ip }}">
+                        <input type="hidden" name="action" value="remove_blacklist">
+                        <button type="submit">Remove</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
